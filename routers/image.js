@@ -1,8 +1,12 @@
 const { Router } = require("express");
 const router = new Router();
 
+
 //model imports
 const Image = require("../models").image;
+
+//middleware import
+const AuthMiddleware = require("../auth/middleware");
 
 // GET all images
 router.get("/", async (req, res, next) => {
@@ -23,9 +27,7 @@ router.post("/", async (req, res, next) => {
     } else {
       const newImage = await Image.create(req.body);
       res.send(newImage);
-    }
-  } catch (e) {
-    next(e);
+    
   }
 });
 
@@ -43,5 +45,25 @@ router.get("/:id", async (req, res, next) => {
     next(e);
   }
 });
+
+// Add a protection to images
+// router.get("/auth/messy", async (req, res, next) => {
+//   const auth =
+//     req.headers.authorization && req.headers.authorization.split(" ");
+//   if (auth && auth[0] === "Bearer" && auth[1]) {
+//     try {
+//       const data = toData(auth[1]);
+//       const allImages = await Image.findAll();
+//       res.json(allImages);
+//     } catch (e) {
+//       //   console.log(e);
+//       res.status(400).send("Invalid JWT token");
+//     }
+//   } else {
+//     res.status(401).send({
+//       message: "Please supply some valid credentials",
+//     });
+//   }
+// });
 
 module.exports = router;
