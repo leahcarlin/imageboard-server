@@ -1,0 +1,20 @@
+{
+  "development": {
+    "url": "postgres://eyrhtors:42FihAWLaAnUYDGnX11-1UQMB8g9-c00@fanny.db.elephantsql.com/eyrhtors",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
